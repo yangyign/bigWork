@@ -1,0 +1,114 @@
+/*
+* @Author: hxzyy
+* @Date:   2019-12-09 21:06:10
+* @Last Modified by:   hxzyy
+* @Last Modified time: 2019-12-11 12:22:32
+*/
+*{
+	padding: 0;
+	margin: 0;
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+}
+.wrap{
+	height: 500px;
+	/* background-color: blue; */
+}
+.first-wrap{
+	height: 20px;
+	background-color: lightgray;
+}
+.first{
+	margin: 0 auto;
+	height: 20px;
+/* 	background-color: pink; */
+	width: 800px;
+	position: relative;
+	overflow: hidden;
+}
+.first img{
+	/* position: absolute;
+	left: 0px; */
+	margin-top: 1px;
+	padding-right: 2px;
+	float: left;
+/* 	position: relative; */
+	/* overflow: hidden; */
+	/* vertical-align: middle; */
+}
+.d1{
+	float: left;
+	height: 20px;
+/* 	background-color: yellow; */
+	overflow: hidden;
+	position: relative;
+	width: 782px;
+}
+.s1{
+	color: red;
+	font-size: 12px;
+	position: relative;
+	right: -280px;
+	top: 2px;
+	float: right;
+	/* display: inline-block; */
+}
+.second-wrap{
+	width: 1200px;
+	height: 382px;
+	position: relative;
+	margin: 100px auto;
+	overflow: hidden;
+	margin-top: 10px;
+}
+.slider{
+	width: 8400px;
+	position: absolute;
+	left: -1200px;
+}
+.slide{
+	width: 1200px;
+	overflow: hidden;
+	float: left;
+}
+.second-wrap>span{
+	display: block;
+	width: 30px;
+	height: 50px;
+	text-align: center;
+	cursor: pointer;
+	color: 	   ;
+	top: 175px;
+	line-height: 50px;
+	background: rgb(255, 0, 0);
+	font-size: 30px;
+	position: absolute;
+	opacity: 0;
+}
+#left{
+	left: 30px;
+}
+#right{
+	right: 30px;
+}
+.nav{
+	position: absolute;
+	left: 500px;
+	bottom: 20px;
+}
+.nav>li{
+	float: left;
+	width: 20px;
+	height: 20px;
+	background: #ccc;
+	cursor: pointer;
+	margin: 0 10px;
+	border-radius: 50%;
+}
+.nav .active{
+	background: red;
+}
