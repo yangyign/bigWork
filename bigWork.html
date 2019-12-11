@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bigWork</title>
+	<link rel="stylesheet" href="bigWork.css">
+	<script src="animate.js"></script>
+</head>
+<body>
+	<div class = "wrap">
+		<div class="first-wrap" id="first-wrap">
+			<div class="first" id="first">
+				<img src="images/a15.png" alt="">
+				<div class="d1" id="d1">
+					<p class = "s1" id="s1">[温馨提示]最近有不少不法分子在网上骗人，请大家注意!!!</p>
+				</div>
+				
+			</div>
+		</div>
+		<div class="second-wrap" id="second-wrap">
+			<div class="slider" id="slider">
+				<div class="slide"><img src="images/b5.png" alt=""></div>
+				<div class="slide"><img src="images/b1.png" alt=""></div>
+				<div class="slide"><img src="images/b2.png" alt=""></div>
+				<div class="slide"><img src="images/b3.png" alt=""></div>
+				<div class="slide"><img src="images/b4.png" alt=""></div>
+				<div class="slide"><img src="images/b5.png" alt=""></div>
+				<div class="slide"><img src="images/b1.png" alt=""></div>
+			</div>
+			<span id="left"><</span>
+			<span id="right">></span>
+			<ul class="nav" id="nav">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+</body>
+<script type = "text/javascript">
+	var p = document.getElementsByClassName("s1")[0];
+	var second = document.getElementById("second-wrap");
+	var slider = document.getElementById("slider");
+	var oNavlist = document.getElementById("nav").children;
+	var left = document.getElementById("left");
+	var right = document.getElementById("right");
+	var index = 1;
+	var timer;
+	var isMoving = false;
+	function next(){
+		if(isMoving){
+			return;
+		}
+		isMoving = true;
+		index++;
+		navChange();
+		animate(slider,{left:-1200*index},function(){
+			if(index === 6){
+				slider.style.left = "-1200px";
+				index = 1;
+			}
+			isMoving = false;
+		});
+	}
+	function pre(){
+		if(isMoving){
+			return;
+		}
+		isMoving = true;
+		index--;
+		navChange();
+		animate(slider,{left:-1200*index},function(){
+			if(index === 0){
+				slider.style.left = "-6000px";
+				index = 5;
+			}
+			isMoving = false;
+		});
+	}
+	timer = setInterval(next, 2000);
+	//鼠标划入清定时器，左右箭头出现
+	second.onmouseover = function(){
+		animate(left,{opacity:50});
+		animate(right,{opacity:50});
+		clearInterval(timer);
+	}
+	//鼠标划出添加定时器，同时左右箭头消失
+	second.onmouseout = function(){
+		animate(left,{opacity:0});
+		animate(right,{opacity:0});
+		timer = setInterval(next,2000);
+	}
+	right.onclick = next;
+	left.onclick = pre;
+	//给5个li绑定单击事件
+	for(var i = 0;i<oNavlist.length;i++){
+		oNavlist[i].idx = i;
+		oNavlist[i].onclick = function(){
+			index = this.idx + 1;
+			navChange();
+			animate(slider,{left:-1200*index});
+		}
+	}
+	//小按钮背景色切换
+	function navChange(){
+		for(var i = 0;i<oNavlist.length;i++){
+			oNavlist[i].className = '';
+		}
+		if(index === 6){
+			oNavlist[0].className = "active";
+		}
+		else if(index === 0){
+			oNavlist[4].className = "active";
+		}
+		else{
+			oNavlist[index-1].className = "active";
+		}
+	}
+	window.onload = function(){
+		var timer = setInterval(function(){
+			var now = parseInt(getStyle(p,"right"));
+			if(now === 800){
+				now = -281;
+				p.style.right = now + 1 +"px";
+			}
+			else{
+				p.style.right = now + 1 + "px";
+			}
+		}, 70);
+	}
+</script>
+</html>
